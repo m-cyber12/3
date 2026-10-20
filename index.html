@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>ADRIAN VOLT — Electrical Engineer</title>
+<meta name="description" content="Adrian Volt — Senior Electrical Engineer. Power systems, embedded architecture & high-voltage innovation since 2009."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz@0,6..72;1,6..72&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070A12;
+  --bg2:#0E1420;
+  --bg3:#111A2E;
+  --line:rgba(255,255,255,.09);
+  --line2:rgba(255,255,255,.14);
+  --muted:#8A95AD;
+  --muted2:#5E6B87;
+  --text:#F2EEE6;
+  --text2:#C9D1E2;
+  --cyan:#00E5CC;
+  --cyan2:#00D1FF;
+  --amber:#FF7A00;
+  --amber2:#FFB240;
+  --radius:18px;
+  --max:1240px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:"Instrument Sans",system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font:inherit}
+
+::selection{background:rgba(0,229,204,.3)}
+
+/* noise */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1;opacity:.35;
+}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:40;
+  backdrop-filter:blur(16px) saturate(1.2);
+  background:rgba(7,10,18,.62);
+  border-bottom:1px solid var(--line);
+}
+.nav__inner{
+  max-width:var(--max);margin:0 auto;
+  padding:14px 24px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  letter-spacing:.14em;
+}
+.brand__mark{
+  width:36px;height:36px;border-radius:10px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  display:grid;place-items:center;
+  color:#001418;font-weight:700;font-size:13px;
+  box-shadow:0 6px 24px rgba(0,229,204,.35);
+}
+.brand__name{font-family:"JetBrains Mono",monospace;font-size:12px;line-height:1}
+.brand__name b{display:block;font-weight:600;font-size:13px;letter-spacing:.18em}
+.brand__name span{opacity:.6;letter-spacing:.22em;font-size:9px}
+.nav__links{display:flex;gap:28px;align-items:center}
+.nav__links a{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);transition:.2s;
+}
+.nav__links a:hover{color:var(--text)}
+.nav__cta{
+  padding:10px 18px;border-radius:999px;
+  background:var(--text);color:#070A12;
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  font-weight:600;
+  transition:.2s;
+}
+.nav__cta:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(242,238,230,.18)}
+.hamburger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.04);display:none;place-items:center}
+@media(max-width:900px){
+  .nav__links,.nav__cta{display:none}
+  .hamburger{display:grid}
+}
+
+/* HERO */
+.hero{
+  position:relative;
+  padding:108px 0 0;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 600px at 70% 10%, rgba(0,209,255,.18), transparent 60%),
+    radial-gradient(800px 600px at 15% 40%, rgba(0,229,204,.10), transparent 60%),
+    radial-gradient(700px 500px at 90% 90%, rgba(255,122,0,.08), transparent 60%),
+    linear-gradient(180deg, #070A12 0%, #0A0F1E 100%);
+}
+.hero__grid{
+  max-width:var(--max);margin:0 auto;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:1.15fr .85fr;
+  gap:32px;
+  align-items:center;
+}
+@media(max-width:980px){ .hero__grid{grid-template-columns:1fr} }
+
+.kicker{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--cyan);
+  border:1px solid rgba(0,229,204,.22);
+  background:rgba(0,229,204,.07);
+  padding:8px 12px;border-radius:999px;
+}
+.kicker i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 12px var(--cyan);display:inline-block;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5;transform:scale(.9)}}
+
+.hero h1{
+  margin:18px 0 0;
+  font-family:"Cormorant Garamond",serif;
+  font-weight:300;
+  line-height:.88;
+  font-size:clamp(46px, 7vw, 88px);
+  letter-spacing:-.04em;
+}
+.hero h1 em{
+  font-style:italic;
+  font-weight:400;
+  background:linear-gradient(90deg,var(--cyan) 0%, var(--cyan2) 55%, #9FEFFF 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero h1 .line2{ display:block; font-size:.92em; opacity:.95}
+.hero__sub{
+  margin:18px 0 0;
+  color:var(--text2);font-size:17px;line-height:1.65;max-width:560px;
+}
+.hero__sub strong{color:var(--text);font-weight:600}
+.hero__actions{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-primary{
+  padding:16px 22px;border-radius:999px;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#001418;font-weight:700;
+  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  border:0;display:inline-flex;align-items:center;gap:10px;
+  box-shadow:0 10px 30px rgba(0,229,204,.28);
+  transition:.2s;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,229,204,.34)}
+.btn-ghost{
+  padding:15px 20px;border-radius:999px;
+  border:1px solid var(--line2);
+  background:rgba(255,255,255,.04);
+  backdrop-filter:blur(8px);
+  color:var(--text);
+  font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:10px;
+}
+.hero__meta{
+  margin-top:34px;
+  display:flex;gap:28px;flex-wrap:wrap;
+  border-top:1px solid var(--line);
+  padding-top:18px;
+}
+.meta__item{font-family:"JetBrains Mono",monospace}
+.meta__item b{display:block;font-size:22px;letter-spacing:-.03em;color:var(--text);font-weight:500}
+.meta__item b small{font-size:12px;color:var(--cyan);margin-left:2px}
+.meta__item span{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+
+/* hero visual */
+.hero__visual{position:relative;min-height:520px;display:grid;place-items:center}
+@media(max-width:980px){.hero__visual{min-height:420px}}
+.frame{
+  position:relative;width:100%;max-width:520px;aspect-ratio:1.02;
+  border-radius:24px;
+  background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.10);
+  overflow:hidden;
+  box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.12);
+}
+.frame::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size:38px 38px;
+  opacity:.28;
+  mask:radial-gradient(600px 600px at 50% 50%, black 60%, transparent 82%);
+}
+.frame__top{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.dots{display:flex;gap:6px}
+.dots i{width:9px;height:9px;border-radius:50%;display:block}
+.dots i:nth-child(1){background:#FF5F56}
+.dots i:nth-child(2){background:#FFBD2E}
+.dots i:nth-child(3){background:#27C93F}
+.frame__body{position:relative;z-index:2;padding:18px}
+.schematic{
+  width:100%;height:280px;display:block;
+}
+.chip{
+  position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);
+  width:118px;height:118px;border-radius:18px;
+  background:linear-gradient(180deg,#0F1A33,#0A1328);
+  border:1px solid rgba(0,229,204,.28);
+  box-shadow:0 0 0 10px rgba(0,229,204,.06), 0 16px 40px rgba(0,0,0,.5);
+  display:grid;place-items:center;
+  text-align:center;
+}
+.chip::before,.chip::after{content:"";position:absolute;top:22px;bottom:22px;width:3px;background:repeating-linear-gradient(to bottom, rgba(0,229,204,.9) 0 6px, transparent 6px 10px)}
+.chip::before{left:-8px;border-radius:2px}
+.chip::after{right:-8px;border-radius:2px}
+.chip b{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:var(--cyan);display:block}
+.chip strong{font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:400;letter-spacing:-.03em;margin-top:2px;display:block}
+.chip span{font-size:10px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;display:block}
+.frame__stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;
+}
+.stat{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);
+  border-radius:14px;padding:12px 14px;
+}
+.stat label{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block}
+.stat strong{font-size:16px;letter-spacing:-.03em;margin-top:6px;display:flex;align-items:baseline;gap:6px}
+.stat strong em{font-style:normal;color:var(--cyan);font-family:"JetBrains Mono",monospace;font-size:11px}
+.stat .bar{height:3px;background:rgba(255,255,255,.1);border-radius:999px;margin-top:10px;overflow:hidden}
+.stat .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--cyan2));border-radius:999px}
+
+.float-card{
+  position:absolute;z-index:3;
+  background:rgba(14,20,32,.86);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:16px;padding:12px 14px;
+  box-shadow:0 18px 40px rgba(0,0,0,.45);
+  display:flex;gap:12px;align-items:center;
+}
+.float-card .ico{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:rgba(0,229,204,.14);border:1px solid rgba(0,229,204,.22);color:var(--cyan)}
+.float-card b{font-size:12px;letter-spacing:-.02em;display:block}
+.float-card span{font-size:11px;color:var(--muted);display:block;margin-top:2px}
+.float-card--a{left:0;top:18px;transform:rotate(-1.5deg)}
+.float-card--b{right:0;bottom:22px;transform:rotate(1.2deg)}
+@media(max-width:980px){.float-card--a{left:8px;top:8px}.float-card--b{right:8px;bottom:8px}}
+
+/* ticker */
+.ticker{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+  overflow:hidden;white-space:nowrap;
+  padding:12px 0;
+}
+.ticker__track{display:inline-flex;gap:28px;animation:marquee 28s linear infinite}
+.ticker__track span{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:12px}
+.ticker__track span i{width:5px;height:5px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px var(--cyan);display:inline-block}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* sections */
+.section{padding:72px 0;position:relative}
+.section__head{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.20em;text-transform:uppercase;color:var(--cyan);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--cyan);display:block;opacity:.7}
+.h2{font-family:"Cormorant Garamond",serif;font-weight:300;font-size:44px;letter-spacing:-.04em;line-height:.95;margin:10px 0 0}
+.h2 em{font-style:italic;color:var(--text)}
+.h2 i{font-style:normal;color:var(--cyan2)}
+.p{color:var(--text2);line-height:1.7;max-width:560px;margin:10px 0 0;font-size:15.5px}
+
+/* philosophy */
+.philosophy{
+  max-width:var(--max);margin:0 auto;padding:0 24px;
+  display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:start;
+}
+@media(max-width:900px){.philosophy{grid-template-columns:1fr}}
+.quote{
+  position:relative;
+  border-left:1px solid rgba(255,255,255,.10);
+  padding-left:28px;
+}
+.quote p{
+  font-family:"Cormorant Garamond",serif;
+  font-size:30px;line-height:1.18;letter-spacing:-.03em;
+  font-weight:300;color:var(--text);
+}
+.quote p em{font-style:italic;color:var(--cyan2)}
+.quote cite{
+  display:block;margin-top:16px;
+  font-family:"JetBrains Mono",monospace;font-style:normal;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+}
+.philosophy__cards{display:grid;gap:14px}
+.mini{
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:18px;padding:18px;
+  display:flex;gap:16px;
+}
+.mini__icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;flex-shrink:0;background:rgba(0,229,204,.10);border:1px solid rgba(0,229,204,.16);color:var(--cyan)}
+.mini b{font-size:13px;letter-spacing:-.02em}
+.mini p{margin:6px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6}
+
+/* expertise */
+.expertise{max-width:var(--max);margin:34px auto 0;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:980px){.expertise{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.expertise{grid-template-columns:1fr}}
+.cap{
+  position:relative;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.015));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:20px;padding:20px;overflow:hidden;
+  transition:.25s;
+}
+.cap:hover{transform:translateY(-4px);border-color:rgba(0,229,204,.22);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.cap::after{
+  content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;
+  background:radial-gradient(closest-side, rgba(0,229,204,.12), transparent 70%);
+  pointer-events:none;
+}
+.cap__top{display:flex;align-items:center;justify-content:space-between}
+.cap__icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:var(--cyan2)}
+.cap__num{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--muted2)}
+.cap h3{margin:16px 0 0;font-size:16px;letter-spacing:-.03em}
+.cap p{margin:8px 0 0;color:var(--muted);font-size:13.8px;line-height:1.65}
+.cap ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px}
+.cap ul li{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:6px 8px;border-radius:999px}
+
+/* projects */
+.projects{max-width:var(--max);margin:22px auto 0;padding:0 24px;display:grid;gap:18px}
+.proj{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:0;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:22px;overflow:hidden;
+}
+.proj:nth-child(even){grid-template-columns:.95fr 1.05fr}
+.proj:nth-child(even) .proj__media{order:2}
+.proj:nth-child(even) .proj__body{order:1}
+@media(max-width:900px){
+  .proj,.proj:nth-child(even){grid-template-columns:1fr}
+  .proj:nth-child(even) .proj__media,.proj:nth-child(even) .proj__body{order:unset}
+}
+.proj__media{
+  position:relative;min-height:360px;
+  background:#0B1020;overflow:hidden;
+  display:grid;place-items:center;
+  padding:18px;
+}
+.proj__media::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px);
+  background-size:28px 28px;opacity:.22;
+}
+.proj__media img{
+  position:relative;z-index:1;
+  width:100%;height:100%;object-fit:cover;border-radius:16px;
+  filter:saturate(1.05) contrast(1.05);
+}
+.proj__overlay{
+  position:absolute;z-index:2;left:18px;right:18px;bottom:18px;
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.chip-sm{
+  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  background:rgba(7,10,18,.78);backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,.14);
+  color:var(--text);padding:8px 10px;border-radius:999px;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.chip-sm i{width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block}
+.proj__body{padding:26px 26px 22px;display:flex;flex-direction:column}
+.proj__kicker{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.proj__body h3{margin:10px 0 0;font-family:"Cormorant Garamond",serif;font-weight:400;font-size:28px;letter-spacing:-.04em;line-height:1}
+.proj__body h3 em{font-style:italic;color:var(--cyan2)}
+.proj__body p{margin:12px 0 0;color:var(--text2);line-height:1.7;font-size:14.5px}
+.proj__facts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.08)}
+.fact b{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block}
+.fact strong{font-size:14px;letter-spacing:-.02em;margin-top:6px;display:block}
+.proj__link{margin-top:18px;display:inline-flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text);border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.04);width:fit-content;transition:.2s}
+.proj__link:hover{background:rgba(255,255,255,.08);transform:translateY(-1px)}
+
+/* timeline */
+.timeline{max-width:var(--max);margin:14px auto 0;padding:0 24px;display:grid;grid-template-columns:320px 1fr;gap:28px}
+@media(max-width:900px){.timeline{grid-template-columns:1fr}}
+.tl__sticky{position:sticky;top:86px;align-self:start}
+.tl__card{
+  background:linear-gradient(180deg, rgba(0,229,204,.14), rgba(0,229,204,.04));
+  border:1px solid rgba(0,229,204,.22);
+  border-radius:20px;padding:18px;
+}
+.tl__card h4{margin:0;font-size:14px;letter-spacing:-.02em}
+.tl__card p{margin:8px 0 0;color:#0A1420;color:var(--text2);font-size:13px;line-height:1.6}
+.tl__cta{margin-top:14px;display:inline-flex;align-items:center;gap:8px;background:var(--text);color:#070A12;padding:10px 14px;border-radius:999px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600}
+.steps{position:relative;padding-left:28px}
+.steps::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(to bottom, var(--cyan), rgba(255,255,255,.12));opacity:.6}
+.step{position:relative;padding:18px 18px 18px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;margin-bottom:14px}
+.step::before{content:"";position:absolute;left:-24px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 0 6px rgba(0,229,204,.12)}
+.step--active{border-color:rgba(0,229,204,.22);background:rgba(0,229,204,.06)}
+.step__top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.step__role{font-weight:600;letter-spacing:-.02em}
+.step__where{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan)}
+.step__when{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);letter-spacing:.08em}
+.step p{margin:10px 0 0;color:var(--text2);font-size:13.8px;line-height:1.65}
+.step ul{margin:12px 0 0;padding-left:18px;color:var(--muted);font-size:13px;line-height:1.7}
+
+/* awards */
+.awards{max-width:var(--max);margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.awards{grid-template-columns:1fr}}
+.award{
+  border-radius:20px;padding:20px;
+  background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+}
+.award h4{margin:0;font-family:"Cormorant Garamond",serif;font-size:20px;font-weight:400;letter-spacing:-.03em}
+.award p{margin:8px 0 0;color:var(--muted);font-size:13.5px;line-height:1.6}
+.award ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.award ul li{display:flex;gap:10px;align-items:start;color:var(--text2);font-size:13px;line-height:1.5}
+.award ul li i{margin-top:6px;width:6px;height:6px;border-radius:50%;background:var(--amber);flex-shrink:0;box-shadow:0 0 10px rgba(255,122,0,.6)}
+
+/* contact */
+.contact{
+  max-width:var(--max);margin:0 auto;padding:0 24px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:18px;
+}
+@media(max-width:900px){.contact{grid-template-columns:1fr}}
+.contact__card{
+  border-radius:22px;padding:22px;
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+  border:1px solid rgba(255,255,255,.08);
+}
+.contact__card--accent{
+  background:radial-gradient(600px 400px at 20% 10%, rgba(0,229,204,.18), transparent 60%), linear-gradient(180deg, #0E1420, #0A1020);
+  border-color:rgba(0,229,204,.18);
+}
+.contact h3{margin:0;font-family:"Cormorant Garamond",serif;font-weight:300;font-size:30px;letter-spacing:-.04em}
+.contact p{margin:10px 0 0;color:var(--text2);line-height:1.65;font-size:14.5px}
+.form{margin-top:18px;display:grid;gap:12px}
+.field{display:grid;gap:8px}
+.field label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.field input,.field textarea,.field select{
+  width:100%;padding:13px 14px;border-radius:12px;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
+  color:var(--text);outline:none;transition:.2s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(0,229,204,.32);box-shadow:0 0 0 4px rgba(0,229,204,.10)}
+.field textarea{min-height:110px;resize:vertical}
+.form__row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.form__row{grid-template-columns:1fr}}
+.submit{
+  margin-top:4px;
+  padding:14px 18px;border-radius:999px;border:0;
+  background:linear-gradient(135deg,var(--cyan),var(--cyan2));
+  color:#001418;font-weight:700;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  cursor:pointer;transition:.2s;box-shadow:0 10px 28px rgba(0,229,204,.26);
+}
+.submit:hover{transform:translateY(-1px)}
+.contact__list{display:grid;gap:12px;margin-top:18px}
+.citem{display:flex;gap:14px;align-items:center;padding:14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.citem__icon{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:rgba(0,229,204,.10);border:1px solid rgba(0,229,204,.16);color:var(--cyan);flex-shrink:0}
+.citem b{font-size:13px}
+.citem span{font-size:12.5px;color:var(--muted);display:block;margin-top:2px}
+.availability{
+  margin-top:16px;padding:14px;border-radius:14px;
+  background:rgba(0,229,204,.07);border:1px solid rgba(0,229,204,.14);
+  display:flex;gap:12px;align-items:center;
+}
+.availability i{width:9px;height:9px;border-radius:50%;background:#1DE9B6;box-shadow:0 0 12px #1DE9B6;flex-shrink:0}
+.availability b{font-size:12px}
+.availability span{font-size:12px;color:var(--muted)}
+
+/* footer */
+.footer{
+  margin-top:40px;
+  border-top:1px solid var(--line);
+  padding:22px 0 30px;
+  color:var(--muted);
+}
+.footer__inner{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.10em;text-transform:uppercase}
+.footer__links{display:flex;gap:18px;flex-wrap:wrap}
+.footer__links a{color:var(--muted);border-bottom:1px solid transparent}
+.footer__links a:hover{color:var(--text);border-color:rgba(255,255,255,.18)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(14px);transition:.7s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* mobile menu */
+.sheet{
+  position:fixed;inset:0;z-index:50;display:none;
+}
+.sheet.open{display:block}
+.sheet__backdrop{position:absolute;inset:0;background:rgba(0,0,0,.56);backdrop-filter:blur(6px)}
+.sheet__panel{
+  position:absolute;right:12px;top:12px;width:min(360px, calc(100% - 24px));
+  background:#0E1420;border:1px solid rgba(255,255,255,.10);border-radius:20px;
+  padding:16px;box-shadow:0 24px 60px rgba(0,0,0,.6);
+}
+.sheet__head{display:flex;align-items:center;justify-content:space-between}
+.sheet__nav{display:grid;gap:6px;margin-top:14px}
+.sheet__nav a{padding:12px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--text2)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top">
+      <span class="brand__mark">AV</span>
+      <span class="brand__name"><b>ADRIAN VOLT</b><span>ELECTRICAL ENGINEER • SINCE 2009</span></span>
+    </a>
+    <div class="nav__links">
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="nav__cta" href="#contact">Start a project →</a>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="sheet" id="sheet">
+  <div class="sheet__backdrop" id="sheetClose"></div>
+  <div class="sheet__panel">
+    <div class="sheet__head">
+      <span style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)">Menu</span>
+      <button id="sheetX" style="width:36px;height:36px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:white">✕</button>
+    </div>
+    <div class="sheet__nav">
+      <a href="#expertise">Expertise</a>
+      <a href="#work">Selected Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</div>
+
+<header class="hero" id="top">
+  <div class="hero__grid">
+    <div>
+      <span class="kicker"><i></i> Available for high-voltage & embedded consulting — Q1 2026</span>
+      <h1>
+        Electrical<br/>
+        <em>intelligence</em><span class="line2">engineered to endure.</span>
+      </h1>
+      <p class="hero__sub">
+        I’m <strong>Adrian Volt</strong> — senior electrical engineer specializing in <strong>power systems, embedded architecture & industrial automation</strong>. I turn complex energy problems into elegant, certified, production-ready hardware.
+      </p>
+      <div class="hero__actions">
+        <a class="btn-primary" href="#work">View selected work <span>↗</span></a>
+        <a class="btn-ghost" href="#contact">Book a technical call</a>
+      </div>
+      <div class="hero__meta">
+        <div class="meta__item"><b>14<small>yrs</small></b><span>Experience</span></div>
+        <div class="meta__item"><b>68<small>+</small></b><span>Systems deployed</span></div>
+        <div class="meta__item"><b>11<small></small></b><span>Patents & papers</span></div>
+        <div class="meta__item"><b style="color:var(--cyan)">99.2<small>%</small></b><span>Uptime achieved</span></div>
+      </div>
+    </div>
+
+    <div class="hero__visual">
+      <div class="frame reveal in">
+        <div class="frame__top">
+          <span>SYS • AV-CORE / REV 4.2</span>
+          <span style="display:flex;gap:6px;align-items:center"><span class="dots"><i></i><i></i><i></i></span> LIVE</span>
+        </div>
+        <div class="frame__body">
+          <svg class="schematic" viewBox="0 0 520 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- grid -->
+            <g opacity=".9">
+              <!-- left network -->
+              <path d="M24 42 H120 V96 H176" stroke="rgba(0,229,204,.9)" stroke-width="1.6" stroke-dasharray="6 7"/>
+              <path d="M24 238 H120 V184 H176" stroke="rgba(0,229,204,.9)" stroke-width="1.6" stroke-dasharray="6 7"/>
+              <path d="M24 140 H176" stroke="rgba(0,229,204,.45)" stroke-width="1.2"/>
+              <!-- right network -->
+              <path d="M344 42 H420 V96 H496" stroke="rgba(0,229,204,.9)" stroke-width="1.6" stroke-dasharray="6 7"/>
+              <path d="M344 238 H420 V184 H496" stroke="rgba(0,229,204,.9)" stroke-width="1.6" stroke-dasharray="6 7"/>
+              <path d="M344 140 H496" stroke="rgba(0,229,204,.45)" stroke-width="1.2"/>
+              <!-- vertical buses -->
+              <rect x="118" y="42" width="18" height="196" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)"/>
+              <rect x="384" y="42" width="18" height="196" rx="9" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.14)"/>
+              <!-- nodes -->
+              <circle cx="127" cy="56" r="5" fill="#00E5CC" />
+              <circle cx="127" cy="140" r="5" fill="white" />
+              <circle cx="127" cy="224" r="5" fill="#FF7A00" />
+              <circle cx="393" cy="56" r="5" fill="#00E5CC" />
+              <circle cx="393" cy="140" r="5" fill="white" />
+              <circle cx="393" cy="224" r="5" fill="#FF7A00" />
+              <!-- top / bottom coils -->
+              <g stroke="rgba(255,255,255,.9)" stroke-width="1.2" fill="none">
+                <path d="M176 56 C188 56 188 86 200 86 C212 86 212 56 224 56"/>
+                <path d="M176 224 C188 224 188 194 200 194 C212 194 212 224 224 224"/>
+                <path d="M296 56 C308 56 308 86 320 86 C332 86 332 56 344 56"/>
+                <path d="M296 224 C308 224 308 194 320 194 C332 194 332 224 344 224"/>
+              </g>
+              <!-- center connector -->
+              <path d="M224 56 H296" stroke="rgba(255,255,255,.18)" stroke-width="1.2" stroke-dasharray="4 6"/>
+              <path d="M224 224 H296" stroke="rgba(255,255,255,.18)" stroke-width="1.2" stroke-dasharray="4 6"/>
+              <path d="M256 86 V194" stroke="rgba(0,229,204,.7)" stroke-width="1.4"/>
+              <circle cx="256" cy="118" r="3" fill="#00E5CC"/>
+              <circle cx="256" cy="162" r="3" fill="#00E5CC"/>
+            </g>
+            <g font-family="JetBrains Mono, monospace" font-size="8" fill="rgba(255,255,255,.55)" letter-spacing="0.08em">
+              <text x="28" y="36">AC BUS • 11kV</text>
+              <text x="392" y="36">DC LINK • 800V</text>
+              <text x="28" y="254">GND • PE</text>
+              <text x="392" y="254">LOAD • 2.4MW</text>
+            </g>
+          </svg>
+
+          <div class="chip">
+            <div>
+              <b>AV CORE</b>
+              <strong>HV-800</strong>
+              <span>SiC • 99.1% EFF</span>
+            </div>
+          </div>
+
+          <div class="frame__stats">
+            <div class="stat">
+              <label>Power throughput</label>
+              <strong>2.4 <em>MW</em> <span style="margin-left:auto;color:var(--cyan);font-family:JetBrains Mono,monospace;font-size:10px">↗ +12%</span></strong>
+              <div class="bar"><i style="width:78%"></i></div>
+            </div>
+            <div class="stat">
+              <label>Thermal headroom</label>
+              <strong>41 <em>°C</em> <span style="margin-left:auto;color:var(--cyan);font-family:JetBrains Mono,monospace;font-size:10px">STABLE</span></strong>
+              <div class="bar"><i style="width:62%;background:linear-gradient(90deg,#FF7A00,#FFB240)"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float-card float-card--a">
+        <span class="ico"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span>
+        <div><b>IEC 61850 Certified</b><span>Substation automation</span></div>
+      </div>
+      <div class="float-card float-card--b">
+        <span class="ico" style="color:#FF7A00;background:rgba(255,122,0,.12);border-color:rgba(255,122,0,.2)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M3 12h18M7 7l10 10M17 7L7 17"/></svg></span>
+        <div><b>Zero field failures</b><span>Last 36 months • 41 units</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ticker" aria-hidden="true" style="margin-top:36px">
+    <div class="ticker__track">
+      <span><i></i>High-voltage design</span><span><i></i>Embedded C / Rust</span><span><i></i>PCB • Altium • 12 layers</span><span><i></i>Power electronics</span><span><i></i>PLC • SCADA • IEC 61131</span><span><i></i>Renewables & storage</span><span><i></i>EMC / EMI compliance</span><span><i></i>High-voltage design</span><span><i></i>Embedded C / Rust</span><span><i></i>PCB • Altium • 12 layers</span><span><i></i>Power electronics</span><span><i></i>PLC • SCADA • IEC 61131</span><span><i></i>Renewables & storage</span><span><i></i>EMC / EMI compliance</span>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="about">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Philosophy</div>
+      <h2 class="h2">Precision is not a <em>feature</em>. <br/>It is the <i>foundation.</i></h2>
+    </div>
+    <p class="p">Every millivolt matters. Every trace, every thermal path, every line of firmware — designed as if lives depend on it. Because they do.</p>
+  </div>
+
+  <div class="philosophy" style="margin-top:28px">
+    <div class="quote reveal">
+      <p>
+        “I don’t build prototypes that impress in a demo.<br/>
+        I build <em>systems that survive</em> a decade in the desert, in a substation, on a factory floor.”
+      </p>
+      <cite>— Adrian Volt, on reliability as a design constraint</cite>
+      <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+        <span class="chip-sm"><i></i> Mean time between failures &gt; 85,000 hrs</span>
+        <span class="chip-sm" style="border-color:rgba(255,122,0,.22)"><i style="background:var(--amber)"></i> -40°C to +85°C rated</span>
+      </div>
+    </div>
+    <div class="philosophy__cards">
+      <div class="mini reveal">
+        <span class="mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+        <div><b>Certified to ship</b><p>CE, UL, IEC — EMC, isolation, and safety baked in from schematic, not patched after.</p></div>
+      </div>
+      <div class="mini reveal">
+        <span class="mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M10 13H8"/><path d="M16 17H8"/><path d="M13 13h3"/></svg></span>
+        <div><b>Documentation that outlives you</b><p>Full lifecycle BOM, test jigs, DFMEA, and service manuals — so your team never guesses.</p></div>
+      </div>
+      <div class="mini reveal">
+        <span class="mini__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3v18h18"/><path d="M7 16l4-4 4 4 6-8"/></svg></span>
+        <div><b>Measured, then trusted</b><p>Oscilloscope first, spreadsheet second. Every claim backed by logged, timestamped test data.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="expertise" style="padding-top:18px">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Core expertise</div>
+      <h2 class="h2">Six disciplines, <em>one</em> standard.</h2>
+    </div>
+    <p class="p">From 11kV switchgear logic to sub-microamp sleep currents — I own the full stack between copper and code.</p>
+  </div>
+  <div class="expertise">
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><span class="cap__num">01 / 06</span></div>
+      <h3>Power Systems & Distribution</h3>
+      <p>Medium-voltage design, protection relaying, load flow, and arc-flash mitigation for critical infrastructure.</p>
+      <ul><li>11kV / 33kV</li><li>ETAP • DIgSILENT</li><li>IEC 61850</li></ul>
+    </article>
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9z"/><path d="M9 1v2M15 1v2M9 21v2M15 21v2M1 9h2M1 15h2M21 9h2M21 15h2"/></svg></span><span class="cap__num">02 / 06</span></div>
+      <h3>Embedded & Control</h3>
+      <p>Real-time firmware on STM32, SiC drivers, and failsafe state machines that never brick in the field.</p>
+      <ul><li>C / Rust / MISRA</li><li>FreeRTOS</li><li>CAN • Modbus • EtherCAT</li></ul>
+    </article>
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9z"/><path d="M3 9V7a2 2 0 0 1 2-2h2"/><path d="M7 13h10"/><path d="M7 17h6"/></svg></span><span class="cap__num">03 / 06</span></div>
+      <h3>PCB & Hardware</h3>
+      <p>High-current, high-speed, high-voltage — 12-layer impedance-controlled boards that pass EMC first spin.</p>
+      <ul><li>Altium</li><li>SiC / GaN</li><li>EMC pre-scan</li></ul>
+    </article>
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span class="cap__num">04 / 06</span></div>
+      <h3>Industrial Automation</h3>
+      <p>PLC, SCADA, and robotics integration that turns a manual line into a lights-out operation.</p>
+      <ul><li>Siemens TIA</li><li>Codesys</li><li>OPC UA</li></ul>
+    </article>
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span><span class="cap__num">05 / 06</span></div>
+      <h3>Signal & Power Integrity</h3>
+      <p>From 10GS/s validation to conducted immunity — signals stay clean when the plant floor is not.</p>
+      <ul><li>HyperLynx</li><li>LTspice</li><li>10GS/s scope</li></ul>
+    </article>
+    <article class="cap reveal">
+      <div class="cap__top"><span class="cap__icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></span><span class="cap__num">06 / 06</span></div>
+      <h3>Renewables & Storage</h3>
+      <p>Solar + storage microgrids, MPPT, and bidirectional inverters — grid-forming when the grid fails.</p>
+      <ul><li>MPPT</li><li>BESS</li><li>Grid-forming</li></ul>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Selected work — 2020 → 2025</div>
+      <h2 class="h2">Things that now run <em>without</em> me.</h2>
+    </div>
+    <p class="p">No renders. No concepts. Only deployed hardware — photographed in the field, measured under load.</p>
+  </div>
+
+  <div class="projects">
+    <article class="proj reveal">
+      <div class="proj__media">
+        <img alt="High voltage substation" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=900&q=80&auto=format&fit=crop"/>
+        <div class="proj__overlay">
+          <span class="chip-sm"><i></i> 33kV Substation</span>
+          <span class="chip-sm">IEC 61850 • 2024</span>
+          <span class="chip-sm">99.96% uptime</span>
+        </div>
+      </div>
+      <div class="proj__body">
+        <span class="proj__kicker">01 — Critical infrastructure • Oman</span>
+        <h3>Grid-forming microgrid for <em>offshore platform</em></h3>
+        <p>2.4MW SiC-based hybrid microgrid — solar, BESS, and diesel with bumpless black-start. Designed to ride through a full bus fault without dropping drilling load.</p>
+        <div class="proj__facts">
+          <div class="fact"><b>Role</b><strong>Lead EE</strong></div>
+          <div class="fact"><b>Efficiency</b><strong>98.7% peak</strong></div>
+          <div class="fact"><b>Cert</b><strong>IEC / DNV</strong></div>
+        </div>
+        <a class="proj__link" href="#contact">Request case study — NDA →</a>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="proj__media">
+        <img alt="PCB and electronics" src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=900&q=80&auto=format&fit=crop"/>
+        <div class="proj__overlay">
+          <span class="chip-sm"><i style="background:var(--amber)"></i> 12-Layer PCB</span>
+          <span class="chip-sm">SiC MOSFET • 800V</span>
+          <span class="chip-sm">EMC Class A</span>
+        </div>
+      </div>
+      <div class="proj__body">
+        <span class="proj__kicker">02 — Power electronics • Munich</span>
+        <h3>800V traction inverter that <em>passes EMC first spin</em></h3>
+        <p>Automotive-grade inverter for heavy logistics AGVs. 12-layer board, 2oz copper, integrated liquid cold plate. Zero re-spins from pre-scan to chamber.</p>
+        <div class="proj__facts">
+          <div class="fact"><b>Power</b><strong>180 kW</strong></div>
+          <div class="fact"><b>Density</b><strong>4.2 kW/L</strong></div>
+          <div class="fact"><b>EMC</b><strong>1st pass</strong></div>
+        </div>
+        <a class="proj__link" href="#contact">See test report →</a>
+      </div>
+    </article>
+
+    <article class="proj reveal">
+      <div class="proj__media">
+        <img alt="Factory automation" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=80&auto=format&fit=crop"/>
+        <div class="proj__overlay">
+          <span class="chip-sm"><i></i> Lights-out line</span>
+          <span class="chip-sm">Siemens S7-1500</span>
+          <span class="chip-sm">-38% downtime</span>
+        </div>
+      </div>
+      <div class="proj__body">
+        <span class="proj__kicker">03 — Industrial automation • Stuttgart</span>
+        <h3>Retrofit that cut downtime by <em>38% in 90 days</em></h3>
+        <p>Full PLC/SCADA overhaul for a 1978 stamping line — digital twin, predictive maintenance, and safety PLC to SIL 3 without stopping production.</p>
+        <div class="proj__facts">
+          <div class="fact"><b>Line</b><strong>6 presses</strong></div>
+          <div class="fact"><b>Saving</b><strong>€1.2M/yr</strong></div>
+          <div class="fact"><b>Safety</b><strong>SIL 3</strong></div>
+        </div>
+        <a class="proj__link" href="#contact">View before / after →</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Experience</div>
+      <h2 class="h2">Built in substations, <em>not</em> slide decks.</h2>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl__sticky">
+      <div class="tl__card">
+        <h4>Available for new engagements</h4>
+        <p>Fractional lead EE for Series A–C hardware teams and EPCs. 2–3 days/week, on-site when it matters.</p>
+        <a class="tl__cta" href="#contact">Check availability →</a>
+        <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+          <span style="font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:6px 8px;border-radius:999px">Remote • EU / GCC</span>
+          <span style="font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1);padding:6px 8px;border-radius:999px">On-site: DE / CH / OM</span>
+        </div>
+      </div>
+    </div>
+    <div class="steps">
+      <div class="step step--active reveal">
+        <div class="step__top">
+          <div><div class="step__role">Lead Electrical Engineer — Volt Systems GmbH</div><div class="step__where">Munich • Power electronics & microgrids</div></div>
+          <div class="step__when">2021 — Present</div>
+        </div>
+        <p>Own 800V platform from schematic to type-test. Team of 6. Responsible for safety case and certification.</p>
+        <ul>
+          <li>Shipped 41 HV-800 inverters, zero field returns</li>
+          <li>Led 2.4MW offshore microgrid — DNV witnessed FAT</li>
+          <li>Patent: interleaved SiC gate drive with active Miller clamp (EP 4 182 991)</li>
+        </ul>
+      </div>
+      <div class="step reveal">
+        <div class="step__top">
+          <div><div class="step__role">Senior EE — ABB Electrification</div><div class="step__where">Zurich • Substation automation</div></div>
+          <div class="step__when">2016 — 2021</div>
+        </div>
+        <p>Protection & control for 33kV distribution — IEC 61850 GOOSE, redundant PRP/HSR networks.</p>
+        <ul>
+          <li>Commissioned 14 secondary substations across CH & AT</li>
+          <li>Cut FAT time by 30% with automated relay test harness</li>
+        </ul>
+      </div>
+      <div class="step reveal">
+        <div class="step__top">
+          <div><div class="step__role">Electrical Engineer — Siemens Energy</div><div class="step__where">Erlangen • Industrial drives</div></div>
+          <div class="step__when">2011 — 2016</div>
+        </div>
+        <p>Medium-voltage drives and harmonic studies for steel & cement plants. MATLAB/Simulink to site.</p>
+        <ul>
+          <li>12 harmonic filter designs, THD &lt; 3% on first energization</li>
+          <li>On-site commissioning in 9 countries</li>
+        </ul>
+      </div>
+      <div class="step reveal">
+        <div class="step__top">
+          <div><div class="step__role">M.Sc. Electrical Engineering — TU Munich</div><div class="step__where">Focus: Power electronics & control</div></div>
+          <div class="step__when">2009 — 2011</div>
+        </div>
+        <p>Thesis: Model-predictive control of three-level NPC inverter. Distinction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Recognition</div>
+      <h2 class="h2">Peer-reviewed. <em>Field-proven.</em></h2>
+    </div>
+  </div>
+  <div class="awards" style="margin-top:22px">
+    <div class="award reveal">
+      <h4>Patents & Papers</h4>
+      <p>11 publications — 3 patents granted, 2 pending.</p>
+      <ul>
+        <li><i></i><span>EP 4 182 991 — Active Miller clamp for SiC (2023)</span></li>
+        <li><i></i><span>IEEE Trans. Power Electron. — Grid-forming MPC (2022)</span></li>
+        <li><i></i><span>CIGRE 2021 — BESS black-start sequence</span></li>
+      </ul>
+    </div>
+    <div class="award reveal">
+      <h4>Awards</h4>
+      <p>Recognized where it counts — by operators, not juries.</p>
+      <ul>
+        <li><i></i><span>German Innovation Award — Energy, 2023 (HV-800)</span></li>
+        <li><i></i><span>ABB President’s Award — Zero-defect FAT, 2019</span></li>
+        <li><i></i><span>TUM Outstanding Thesis — 2011</span></li>
+      </ul>
+    </div>
+    <div class="award reveal">
+      <h4>Toolchain I trust</h4>
+      <p>What I reach for at 2am when the rig is hot.</p>
+      <ul>
+        <li><i></i><span>Altium • LTspice • PLECS • MATLAB</span></li>
+        <li><i></i><span>ETAP • Wireshark • Saleae • R&S Scope</span></li>
+        <li><i></i><span>J-Link • CANoe • Python • Rust</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section__head">
+    <div>
+      <div class="eyebrow">Contact</div>
+      <h2 class="h2">If it carries current, <em>let’s talk.</em></h2>
+    </div>
+    <p class="p">Tell me about the load, the environment, and what failure would cost. I’ll tell you if I’m the right engineer — honestly.</p>
+  </div>
+
+  <div class="contact" style="margin-top:22px">
+    <div class="contact__card contact__card--accent">
+      <h3>Start with a 30-min technical call</h3>
+      <p>No sales pitch. Bring your single-line diagram or your failing scope capture — we’ll debug live.</p>
+      <form class="form" onsubmit="event.preventDefault(); toast('Message sent — I’ll reply within 12 hours.'); this.reset();">
+        <div class="form__row">
+          <div class="field"><label>Full name</label><input required placeholder="Alex Rivera"/></div>
+          <div class="field"><label>Work email</label><input required type="email" placeholder="alex@company.com"/></div>
+        </div>
+        <div class="form__row">
+          <div class="field"><label>Company</label><input placeholder="Volt Systems GmbH"/></div>
+          <div class="field"><label>Budget range</label>
+            <select><option>€25k — €75k</option><option>€75k — €200k</option><option>€200k+</option><option>Not sure yet</option></select>
+          </div>
+        </div>
+        <div class="field"><label>What are we powering?</label><textarea required placeholder="e.g., 800V traction inverter for AGV fleet — need EMC pass and liquid cooling, 6-month timeline..."></textarea></div>
+        <button class="submit" type="submit">Send inquiry →</button>
+        <span style="font-family:JetBrains Mono,monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">Average reply: 4 hours • NDA on request</span>
+      </form>
+    </div>
+
+    <div class="contact__card">
+      <h3 style="font-size:22px">Direct channels</h3>
+      <p>Prefer a human first? Reach me directly.</p>
+      <div class="contact__list">
+        <a class="citem" href="mailto:adrian@volt.systems">
+          <span class="citem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M22 6l-10 7L2 6"/></svg></span>
+          <div><b>adrian@volt.systems</b><span>PGP available • Response &lt; 12h</span></div>
+        </a>
+        <a class="citem" href="tel:+4915123456789">
+          <span class="citem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+          <div><b>+49 151 2345 6789</b><span>Munich • CET (UTC+1)</span></div>
+        </a>
+        <a class="citem" href="#">
+          <span class="citem__icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+          <div><b>LinkedIn / Adrian Volt</b><span>DMs open • Weekly field notes</span></div>
+        </a>
+      </div>
+      <div class="availability">
+        <i></i>
+        <div><b>Accepting Q1 2026 engagements</b><br/><span>1 slot left for fractional lead • Full-time from April</span></div>
+      </div>
+      <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#" onclick="event.preventDefault();toast('CV downloaded — Adrian_Volt_CV_2025.pdf')" style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.04)">Download CV →</a>
+        <a href="#" onclick="event.preventDefault();toast('Portfolio PDF coming — check email in 2 mins')" style="font-family:JetBrains Mono,monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.04)">Portfolio PDF</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer__inner">
+    <span>© 2026 Adrian Volt — Electrical Engineer • Munich • Built for 100,000 hours</span>
+    <span class="footer__links"><a href="#">Imprint</a><a href="#">Privacy</a><a href="#">PGP Key</a><a href="#top">Back to top ↑</a></span>
+  </div>
+</footer>
+
+<div id="toast" style="position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(20px);background:rgba(14,20,32,.92);border:1px solid rgba(0,229,204,.22);color:var(--text);padding:12px 16px;border-radius:999px;font-family:JetBrains Mono,monospace;font-size:12px;letter-spacing:.04em;backdrop-filter:blur(10px);box-shadow:0 18px 40px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:.35s;z-index:60">Message sent</div>
+
+<script>
+const toastEl=document.getElementById('toast');
+function toast(msg){
+  toastEl.textContent=msg;
+  toastEl.style.opacity='1';
+  toastEl.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(()=>{toastEl.style.opacity='0';toastEl.style.transform='translateX(-50%) translateY(12px)'},2600);
+}
+// reveal on scroll
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// mobile sheet
+const sheet=document.getElementById('sheet');
+document.getElementById('menuBtn').onclick=()=>sheet.classList.add('open');
+document.getElementById('sheetClose').onclick=()=>sheet.classList.remove('open');
+document.getElementById('sheetX').onclick=()=>sheet.classList.remove('open');
+sheet.querySelectorAll('a').forEach(a=>a.onclick=()=>sheet.classList.remove('open'));
+// parallax-ish float
+let t=0;
+setInterval(()=>{
+  t+=0.006;
+  const a=document.querySelector('.float-card--a');
+  const b=document.querySelector('.float-card--b');
+  if(a) a.style.transform=`translateY(${Math.sin(t*1.2)*6}px) rotate(-1.5deg)`;
+  if(b) b.style.transform=`translateY(${Math.cos(t*1.1)*7}px) rotate(1.2deg)`;
+},16);
+</script>
+</body>
+</html>
